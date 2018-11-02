@@ -9,6 +9,7 @@ CCanvas::CCanvas(int x, int y, int w,int h,const char *l)
     m_simulation_running = false;
     m_map_image = NULL;
     m_robot = NULL;
+    m_counter = 0;
 }
 
 //
@@ -61,6 +62,13 @@ void CCanvas::draw()
 
     draw_sensor_beam();
     draw_robot();
+
+    // Do not update the text on properties window all the time.
+    m_counter = m_counter + 1;
+    if (m_counter > 5) {
+        m_robot->update_properties_window();
+        m_counter = 0;
+    }
 }
 
 void CCanvas::draw_robot()

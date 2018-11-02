@@ -301,11 +301,18 @@ void CRobot::az_update_all_sensors()
         m_sensor_data[i].set_end_point(pt);
         m_sensor_data[i].update_value();
     }
+}
 
-    string s = "Number of sensor rays = " + std::to_string(m_cfg.LIDAR_RAYS) + '\n' + '\n';
+void CRobot::update_properties_window()
+{
+    string s;
+    s = "Number of sensor rays = " + boost::lexical_cast <string> (m_cfg.LIDAR_RAYS) + "\n\n";
+
+    char buf[20];
     for (int i = 0; i < m_cfg.LIDAR_RAYS; i++) {
-        s = s + "Ray-" + std::to_string(i) + " = " + std::to_string(m_sensor_data[i].get_value()) + '\n';
+        s = s + "Ray-" + boost::lexical_cast<string>(i) + " = ";
+        sprintf(buf, "%4.2f\n", m_sensor_data[i].get_value());
+        s = s + buf;
     }
-    
     m_window->set_text_propoerties_window(s.c_str());
 }

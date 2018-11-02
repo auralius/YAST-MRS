@@ -92,7 +92,7 @@ void CSimulationWindow::set_cfg_data(const AZ_CONFIG *cfg)
 void CSimulationWindow::set_text_propoerties_window(const char *t)
 {
     if (m_properties_window)
-        m_properties_window->set_disp(t);
+        m_properties_window->set_text(t);
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -193,6 +193,10 @@ void CSimulationWindow::menu_cb_worker()
     else if (strcmp(picked, "File/Quit") == 0)
     {
         stop_simulation();
+
+        if (m_properties_window)
+            m_properties_window->hide();
+
     	this->hide(); // The best way to exit is by hiding the window
     }
 
@@ -267,5 +271,6 @@ void CSimulationWindow::window_cb(Fl_Widget *widget, void *data)
 void CSimulationWindow::window_cb_worker()
 {
     stop_simulation();
+    m_properties_window->hide();
     this->hide();
 }

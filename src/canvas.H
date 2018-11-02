@@ -89,6 +89,9 @@ private:
 	 * (sharing same data).
 	 */
     CRobot *m_robot;
+
+    /// Counter to update properties window
+    int m_counter;
 };
 
 #endif // CANVAS_H_

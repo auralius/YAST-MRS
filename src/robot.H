@@ -12,9 +12,13 @@
 #include "simulation_window.H"
 
 #include <boost/thread.hpp>
+#include <boost/lexical_cast.hpp>
+#include <boost/algorithm/string.hpp> 
 
 #include <iostream>
 #include <fstream>
+#include <vector>
+
 
 class CRobot
 {
@@ -179,6 +183,9 @@ public:
     * Update the values of all sensors
     */
     void az_update_all_sensors();
+
+    /// 
+    void update_properties_window();
 
 private:
     /// Prepare everything needed for simulation.

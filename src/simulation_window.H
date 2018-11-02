@@ -93,7 +93,6 @@ public:
 
     void set_text_propoerties_window(const char *t);
 
-
 private:
     /// Build menu.
     void build_menu();
@@ -107,10 +106,11 @@ private:
     /// Menu call back worker.
     void menu_cb_worker();
 
+    /// Callback when close [x] button on the window is clicked
     static void window_cb(Fl_Widget *widget, void *data);
 
+    /// Worker callback function when close [x] button on the window is clicked
     void window_cb_worker();
-
 
     /// Flag for simulation status.
     bool m_simulation_running;
